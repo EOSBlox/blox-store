@@ -71,14 +71,14 @@ class BloxStore extends PolymerElement {
 
   set(key, value){
     return new Promise((resolve, reject) => {
-        this.result = localStorage.setItem(key, value);
+        this.result = localStorage.setItem(key, JSON.stringify(value));
         resolve(this.result)
     })
   }
 
   get(key){
     return new Promise((resolve, reject) => {
-      this.result = localStorage.getItem(key)
+      this.result = JSON.parse(localStorage.getItem(key));
       resolve(this.result)
     })
   }
@@ -89,5 +89,5 @@ class BloxStore extends PolymerElement {
       resolve(this.result)
     })
   }
-  
+
 } window.customElements.define('blox-store', BloxStore);
